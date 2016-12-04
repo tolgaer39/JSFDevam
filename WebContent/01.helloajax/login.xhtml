@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"> <!-- <f:ajax 'i kullanabilmek icin namespace i eklememiz lazim...-->
+	
+	
+	
+	
+<h:form prependId="false">
+
+	<table>
+		<tr>
+			<td>Name :</td>
+			<td> <h:inputText value="#{helloAjaxBean.name}" id="nameId"> 
+			<f:validateLength minimum="3" maximum="8"></f:validateLength>
+			</h:inputText>
+			</td>		
+		</tr>
+		<tr>
+			<td>Password :</td>
+			<td> <h:inputSecret value="#{helloAjaxBean.password}" id="passwordId" /> </td>		
+		</tr>	
+	
+	</table>
+
+	<h:commandButton value="Click Me!">
+	<f:ajax execute="nameId" render="myOut"/>
+	</h:commandButton>
+	
+	<h:message for="nameId" style="color:red"/>
+
+</h:form>
+
+<!-- value kismina getMessage yerine message yaziyoruz...Boylece ornek calistiginda getMessage methodu calisacaktir. -->
+<h3>
+	<h:outputText id="myOut" value="#{helloAjaxBean.message}"/>
+</h3>
+
+
+</html>
